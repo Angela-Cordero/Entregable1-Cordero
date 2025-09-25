@@ -1,31 +1,58 @@
-const food = ["pizza", "hotdog", "burguer", "sandwich"];
+const food = ["pizza", "hotdog", "burger", "sandwich"];
 var drinks = ["soda", "lemonade", "beer"];
-const desserts = ["cake", "ice-cream", "cookies", "brownie"];
 
 alert(
-  "We are happy to have you here today! \n This is our menu:\n  -Food: pizza, hotdog, burguer, sandwich \n  -Drinks: soda, lemonade, beer\n  -Desserts: cake, ice-cream, cookies, brownie"
+  "👋We are happy to have you here today!  \n This is our menu 📃:\n  -Food: pizza 🍕, hotdog 🌭, burger 🍔, sandwich 🥪 \n  -Drinks: soda🥤, lemonade🍋‍🟩, beer🍺"
 );
 
+// function placeOrder() {
 var desiredFood = prompt("What food do you want today?");
 
-if (food.includes(desiredFood)) {
-  var chosenFood = desiredFood;
-  alert("Awesome! we have " + chosenFood + "😋");
-} else {
+while (!food.includes(desiredFood)) {
   alert(
-    "Sorry, we don't have that 😥, please choose another option. Food: pizza, hotdog, burguer, sandwich"
+    "Sorry, we don't have " +
+      desiredFood +
+      "😥, please choose another option. Food: pizza, hotdog, burger, sandwich"
   );
-  prompt("What food do you want today?");
+  var desiredFood = prompt("What do you want to eat today?");
 }
 
-var desiredDrink = prompt("What drink do you want today?");
+var chosenFood = desiredFood;
 
-if (drinks.includes(desiredDrink)) {
-  var chosenDrink = desiredDrink;
-  alert("Awesome! we have " + chosenDrink + "🥤");
-} else {
+alert("Awesome! we have " + chosenFood + "😋");
+
+var desiredDrink = prompt("What do you want to drink today?");
+
+while (!drinks.includes(desiredDrink)) {
   alert(
-    "Sorry, we don't have that 😥, please choose another option. Drinks: soda, lemonade, beer"
+    "Sorry, we don't have " +
+      desiredDrink +
+      "😥, please choose another option. Drinks: soda, lemonade, beer."
   );
-  prompt("What drink do you want today?");
+  var desiredDrink = prompt("What do you want to drink today?");
 }
+
+var chosenDrink = desiredDrink;
+
+alert("Awesome! we have " + chosenDrink + "😋");
+
+function confirmOrder(food, drink) {
+  let confirmation = prompt(
+    "Your order is " +
+      food +
+      " and " +
+      drink +
+      " Is your order correct? (yes/no)"
+  );
+  if (confirmation === "yes") {
+    alert(
+      "Thank you for confirming 😀. It will be ready in about 20 minutes ⌛."
+    );
+  } else {
+    alert(
+      "We are sorry about that. Please refresh the page and place a new order 👇. Thank you! 🙏"
+    );
+  }
+}
+
+confirmOrder(chosenFood, chosenDrink);
