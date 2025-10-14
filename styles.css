@@ -1,0 +1,51 @@
+.menu {
+  flex: 2;
+  padding: 0, 1rem;
+  justify-content: center;
+}
+
+.cart {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #2c786c;
+}
+
+.cart h2 {
+  color: #faf5e4;
+  background-color: #2c786c;
+}
+
+.food,
+.drinks,
+.desserts {
+  display: flex;
+  gap: 2rem;
+}
+
+.menuItem {
+  background-color: #faf5e4;
+  display: flex;
+  flex-wrap: wrap;
+  border: #280045 2px solid;
+  min-width: 150px;
+  text-align: justify;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+img {
+  margin: 0 auto;
+}
+
+p {
+  background-color: #faf5e4;
+}
+
+footer {
+  background-color: #004445;
+  color: #faf5e4;
+  min-height: 50px;
+  padding: 2rem;
+  text-align: center;
+}

@@ -1,58 +1,58 @@
-const food = ["pizza", "hotdog", "burger", "sandwich"];
-var drinks = ["soda", "lemonade", "beer"];
+// const food = ["pizza", "hotdog", "burger", "sandwich"];
+// var drinks = ["soda", "lemonade", "beer"];
 
-alert(
-  "👋We are happy to have you here today!  \n This is our menu 📃:\n  -Food: pizza 🍕, hotdog 🌭, burger 🍔, sandwich 🥪 \n  -Drinks: soda🥤, lemonade🍋‍🟩, beer🍺"
-);
+// alert(
+//   "👋We are happy to have you here today!  \n This is our menu 📃:\n  -Food: pizza 🍕, hotdog 🌭, burger 🍔, sandwich 🥪 \n  -Drinks: soda🥤, lemonade🍋‍🟩, beer🍺"
+// );
 
-// function placeOrder() {
-var desiredFood = prompt("What food do you want today?");
+// // function placeOrder() {
+// var desiredFood = prompt("What food do you want today?");
 
-while (!food.includes(desiredFood)) {
-  alert(
-    "Sorry, we don't have " +
-      desiredFood +
-      "😥, please choose another option. Food: pizza, hotdog, burger, sandwich"
-  );
-  var desiredFood = prompt("What do you want to eat today?");
-}
+// while (!food.includes(desiredFood)) {
+//   alert(
+//     "Sorry, we don't have " +
+//       desiredFood +
+//       "😥, please choose another option. Food: pizza, hotdog, burger, sandwich"
+//   );
+//   var desiredFood = prompt("What do you want to eat today?");
+// }
 
-var chosenFood = desiredFood;
+// var chosenFood = desiredFood;
 
-alert("Awesome! we have " + chosenFood + "😋");
+// alert("Awesome! we have " + chosenFood + "😋");
 
-var desiredDrink = prompt("What do you want to drink today?");
+// var desiredDrink = prompt("What do you want to drink today?");
 
-while (!drinks.includes(desiredDrink)) {
-  alert(
-    "Sorry, we don't have " +
-      desiredDrink +
-      "😥, please choose another option. Drinks: soda, lemonade, beer."
-  );
-  var desiredDrink = prompt("What do you want to drink today?");
-}
+// while (!drinks.includes(desiredDrink)) {
+//   alert(
+//     "Sorry, we don't have " +
+//       desiredDrink +
+//       "😥, please choose another option. Drinks: soda, lemonade, beer."
+//   );
+//   var desiredDrink = prompt("What do you want to drink today?");
+// }
 
-var chosenDrink = desiredDrink;
+// var chosenDrink = desiredDrink;
 
-alert("Awesome! we have " + chosenDrink + "😋");
+// alert("Awesome! we have " + chosenDrink + "😋");
 
-function confirmOrder(food, drink) {
-  let confirmation = prompt(
-    "Your order is " +
-      food +
-      " and " +
-      drink +
-      " Is your order correct? (yes/no)"
-  );
-  if (confirmation === "yes") {
-    alert(
-      "Thank you for confirming 😀. It will be ready in about 20 minutes ⌛."
-    );
-  } else {
-    alert(
-      "We are sorry about that. Please refresh the page and place a new order 👇. Thank you! 🙏"
-    );
-  }
-}
+// function confirmOrder(food, drink) {
+//   let confirmation = prompt(
+//     "Your order is " +
+//       food +
+//       " and " +
+//       drink +
+//       " Is your order correct? (yes/no)"
+//   );
+//   if (confirmation === "yes") {
+//     alert(
+//       "Thank you for confirming 😀. It will be ready in about 20 minutes ⌛."
+//     );
+//   } else {
+//     alert(
+//       "We are sorry about that. Please refresh the page and place a new order 👇. Thank you! 🙏"
+//     );
+//   }
+// }
 
-confirmOrder(chosenFood, chosenDrink);
+// confirmOrder(chosenFood, chosenDrink);
