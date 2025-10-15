@@ -56,3 +56,14 @@
 // }
 
 // confirmOrder(chosenFood, chosenDrink);
+// Example of how to properly add an event listener to a button
+// First, select the button element (assuming it has an id="orderButton")
+var buttonAddToOrder = document.querySelectorAll(".buttonAddtoOrder");
+
+buttonAddToOrder.forEach(function (button) {
+  button.addEventListener("click", function () {
+    var item = button.closest(".menuItem");
+    var itemName = item.querySelector(".cardTitle").textContent;
+    console.log(itemName);
+  });
+});
