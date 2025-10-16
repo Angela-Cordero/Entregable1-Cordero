@@ -63,12 +63,10 @@ header {
   gap: 2rem;
 }
 
-.menuItem {
+.products {
   background-color: #f8b600;
-  display: flex;
-  flex-wrap: wrap;
   border: #280045 2px solid;
-  min-width: 150px;
+  min-width: 100px;
   text-align: justify;
   padding: 1rem;
   border-radius: 10px;
