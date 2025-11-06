@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: "Elms Sans", sans-serif;
 }
 
 h1 {
@@ -19,22 +20,14 @@ h3 {
   padding: 1rem;
 }
 
-.container {
-  display: flex;
-  flex-wrap: wrap;
-}
-
 header {
   background-color: #f8b400;
   min-height: 7rem;
   text-align: center;
 }
 
-.menu {
-  flex: 2;
-  padding: 0, 1rem;
-  justify-content: center;
-  padding: 2rem;
+.container {
+  display: flex;
 }
 
 .titlePrice {
@@ -43,30 +36,56 @@ header {
   justify-content: space-between;
 }
 
-.order {
-  flex: 1;
+#products-container {
   display: flex;
   flex-wrap: wrap;
-  background-color: #2c786c;
+  justify-content: space-around;
+}
+
+.order {
+  padding: 1rem;
+  min-width: 300px;
+  max-width: 400px;
+  background: #004445;
+}
+
+#orderContainer div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  max-height: 30px;
+  text-align: center;
+  margin: 10px;
+  border: #2c786c solid 2px;
+  min-height: 40px;
+  border-radius: 3px;
+  background-color: #2c786d7b;
 }
 
 .order h2 {
   color: #faf5e4;
   background-color: #2c786c;
   padding: 1rem;
+  margin: 0 auto;
+  height: fit-content;
 }
 
-.food,
-.drinks,
-.desserts {
-  display: flex;
-  gap: 2rem;
+.order h4 {
+  color: #faf5e4;
+  margin: 10px;
+}
+
+.order .price {
+  color: #f8b600;
+  margin: auto 0;
 }
 
 .products {
   background-color: #f8b600;
   border: #280045 2px solid;
   min-width: 100px;
+  max-width: 150px;
+  margin: 1rem;
   text-align: justify;
   padding: 1rem;
   border-radius: 10px;
@@ -76,15 +95,18 @@ img {
   margin: 0 auto;
 }
 
-p {
-  background-color: #f8b600;
-}
-
 .addToOrder button {
   background-color: #004445;
   color: #faf5e4;
   padding: 0.5rem 1rem;
   border-radius: 7px;
+}
+
+.buttonRemoveFromOrder {
+  height: 30px;
+  margin: 5px;
+  border-radius: 10px;
+  background-color: rgb(88, 3, 3);
 }
 
 footer {

@@ -1,85 +1,47 @@
-const products = [
-  {
-    id: 1,
-    name: "Lasagna",
-    price: 10,
-    URL: "https://i.postimg.cc/8jVYY5L2/lasagna.jpg",
-  },
-  {
-    id: 2,
-    name: "Pizza",
-    price: 8,
-    URL: "https://i.postimg.cc/w7drrvhd/pizza.jpg",
-  },
-  {
-    id: 3,
-    name: "Burger",
-    price: 15,
-    URL: "https://i.postimg.cc/9z9S1Tws/burger.jpg",
-  },
-  {
-    id: 4,
-    name: "Sandwich",
-    price: 13,
-    URL: "https://i.postimg.cc/kRWp43d2/sandwich.jpg[/img",
-  },
-  {
-    id: 5,
-    name: "Iced tea",
-    price: 3,
-    URL: "https://i.postimg.cc/Sj95V8zk/iced-tea.jpg",
-  },
-  {
-    id: 6,
-    name: "Lemonade",
-    price: 4,
-    URL: "https://i.postimg.cc/4mT00dpr/lemonade.jpg",
-  },
-  {
-    id: 7,
-    name: "Banana smothie",
-    price: 5,
-    URL: "https://i.postimg.cc/F1SqGckq/banana-smothie.jpg[/img",
-  },
-  {
-    id: 8,
-    name: "cake",
-    price: 11,
-    URL: "https://i.postimg.cc/23WJTvBp/cake.jpg",
-  },
-  {
-    id: 9,
-    name: "Chocolate mousse",
-    price: 7,
-    URL: "https://i.postimg.cc/nMm5T7QJ/chocolate-mousse.jpg",
-  },
-  {
-    id: 10,
-    name: "Lemon cheesecake",
-    price: 5,
-    URL: "https://i.postimg.cc/4ncMwtHq/cheesecake.jpg",
-  },
-];
-
 let productsContainer = document.getElementById("products-container");
+
+let orderedProducts = JSON.parse(localStorage.getItem("orderedProducts")) || [];
+
+fetch("products.json")
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Error when getting JSON");
+    }
+    return response.json();
+  })
+  .then((products) => {
+    renderProducts(products);
+    AddToOrder(products);
+    renderOrderContainer(orderedProducts);
+  })
+  .catch((error) => console.error("There was a problem while loading:", error));
 
 function renderProducts(productsArray) {
   productsArray.forEach((product) => {
     const card = document.createElement("div");
     card.classList.add("products");
-    card.innerHTML = `<img src="${product.URL}" 
-      alt="${product.name}" width="120">
-    <h4>${product.name}</h4>
-    <p>$${product.price}</p>
-    <button class="buttonAddToOrder" id= "${product.id}">Add to order</button>`;
+    card.innerHTML = `
+    <div class="menuItem">
+      <img src="${product.URL}" alt="${product.name}" width="120">
+        <div>
+          <div class="titlePrice">
+              <h4 class="cardTitle">${product.name}</h4>
+              <p class="cardPrice">$${product.price}</p>
+          </div>
+          <p class="cardDesc">${product.description}</p>
+
+          <div class="addToOrder">
+            <button class="buttonAddToOrder" id= "${product.id}">Add to order</button>
+          </div>
+
+        </div>
+    </div>`;
     productsContainer.appendChild(card);
   });
   AddToOrder();
 }
-let orderedProducts = JSON.parse(localStorage.getItem("orderedProducts")) || [];
-renderProducts(products);
 
-function AddToOrder() {
+function AddToOrder(products) {
   addButton = document.querySelectorAll(".buttonAddToOrder");
   addButton.forEach((button) => {
     button.onclick = (e) => {
@@ -102,16 +64,17 @@ renderOrderContainer(orderedProducts);
 function renderOrderContainer(orderedProducts) {
   let orderContainer = document.getElementById("orderContainer");
 
-  orderContainer.innerHTML = "Your order";
+  orderContainer.innerHTML = "";
 
   if (orderedProducts.length > 0) {
     orderedProducts.forEach((product) => {
       const card = document.createElement("div");
-      card.innerHTML = `<img src="${product.URL}" 
-      alt="${product.name}" width="50">
+      card.innerHTML = `
                     <h4>${product.name}</h4>
-                    <p>$${product.price}</p>
-                    <button class="buttonRemoveFromOrder" id= "${product.id}">Remove</button>`;
+                    <p class="price">$${product.price}</p>
+                    <button class="buttonRemoveFromOrder" id= "${product.id}"><span class="material-symbols-outlined">
+delete
+</span></button>`;
       orderContainer.appendChild(card);
     });
     removeFromOrder();

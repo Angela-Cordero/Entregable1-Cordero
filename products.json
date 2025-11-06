@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "name": "Lasagna",
+    "price": 10,
+    "URL": "https://i.postimg.cc/8jVYY5L2/lasagna.jpg",
+    "description": "Layers of pasta, rich tomato sauce, and creamy vegan cheese baked to perfection."
+  },
+  {
+    "id": 2,
+    "name": "Pizza",
+    "price": 8,
+    "URL": "https://i.postimg.cc/w7drrvhd/pizza.jpg",
+    "description": "Crispy thin crust topped with vegan mozzarella, fresh veggies, and aromatic herbs."
+  },
+  {
+    "id": 3,
+    "name": "Burger",
+    "price": 15,
+    "URL": "https://i.postimg.cc/9z9S1Tws/burger.jpg",
+    "description": "Juicy plant-based patty with lettuce, tomato, and vegan mayo in a toasted bun."
+  },
+  {
+    "id": 4,
+    "name": "Sandwich",
+    "price": 13,
+    "URL": "https://i.postimg.cc/kRWp43d2/sandwich.jpg",
+    "description": "Whole-grain bread filled with grilled veggies, hummus, and fresh greens."
+  },
+  {
+    "id": 5,
+    "name": "Iced tea",
+    "price": 3,
+    "URL": "https://i.postimg.cc/Sj95V8zk/iced-tea.jpg",
+    "description": "Refreshing black tea brewed with lemon and mint, served perfectly chilled."
+  },
+  {
+    "id": 6,
+    "name": "Lemonade",
+    "price": 4,
+    "URL": "https://i.postimg.cc/4mT00dpr/lemonade.jpg",
+    "description": "Zesty homemade lemonade made with fresh lemons and a hint of agave syrup."
+  },
+  {
+    "id": 7,
+    "name": "Banana smoothie",
+    "price": 5,
+    "URL": "https://i.postimg.cc/F1SqGckq/banana-smothie.jpg",
+    "description": "Creamy banana blend with oat milk and a touch of cinnamon for natural sweetness."
+  },
+  {
+    "id": 8,
+    "name": "Cake",
+    "price": 11,
+    "URL": "https://i.postimg.cc/23WJTvBp/cake.jpg",
+    "description": "Soft, moist vanilla sponge layered with smooth vegan buttercream frosting."
+  },
+  {
+    "id": 9,
+    "name": "Chocolate mousse",
+    "price": 7,
+    "URL": "https://i.postimg.cc/nMm5T7QJ/chocolate-mousse.jpg",
+    "description": "Silky, rich chocolate mousse made with avocado and cocoa for a guilt-free treat."
+  },
+  {
+    "id": 10,
+    "name": "Lemon cheesecake",
+    "price": 5,
+    "URL": "https://i.postimg.cc/4ncMwtHq/cheesecake.jpg",
+    "description": "Tangy lemon cheesecake with a crunchy oat crust and a smooth cashew cream filling."
+  }
+]
