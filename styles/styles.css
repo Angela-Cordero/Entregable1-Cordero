@@ -23,7 +23,14 @@ h3 {
 header {
   background-color: #f8b400;
   min-height: 7rem;
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#logo {
+  width: 200px;
+  margin: 0;
 }
 
 .container {
@@ -68,6 +75,7 @@ header {
   padding: 1rem;
   margin: 0 auto;
   height: fit-content;
+  border-radius: 3px;
 }
 
 .order h4 {
