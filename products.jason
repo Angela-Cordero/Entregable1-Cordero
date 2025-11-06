@@ -1,0 +1,58 @@
+const products = [
+  {
+    id: 1,
+    name: "pizza",
+    price: 10,
+    URL: "https://i.imgur.com/WT9GQdF.jpeg",
+  },
+  {
+    id: 2,
+    name: "hotdog",
+    price: 8,
+  },
+  {
+    id: 3,
+    name: "burger",
+    price: 15,
+  },
+  {
+    id: 4,
+    name: "sandwich",
+    price: 13,
+  },
+  {
+    id: 5,
+    name: "soda",
+    price: 3,
+  },
+  {
+    id: 6,
+    name: "lemonade",
+    price: 4,
+  },
+  {
+    id: 7,
+    name: "beer",
+    price: 5,
+  },
+  {
+    id: 8,
+    name: "cake",
+    price: 11,
+  },
+  {
+    id: 9,
+    name: "ice-cream",
+    price: 7,
+  },
+  {
+    id: 10,
+    name: "brownie",
+    price: 5,
+  },
+  {
+    id: 11,
+    name: "cookies",
+    price: 2,
+  },
+];
