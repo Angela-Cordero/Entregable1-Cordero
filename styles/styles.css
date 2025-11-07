@@ -50,7 +50,6 @@ header {
 }
 
 .order {
-  padding: 1rem;
   min-width: 300px;
   max-width: 400px;
   background: #004445;
@@ -60,13 +59,38 @@ header {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
-  max-height: 30px;
   text-align: center;
   margin: 10px;
   border: #2c786c solid 2px;
-  min-height: 40px;
+
   border-radius: 3px;
   background-color: #2c786d7b;
+}
+
+.adjustQuantity {
+  display: flex;
+  border: #004445 solid 2px;
+  border-radius: 4px;
+  margin: 5px;
+  max-height: 30px;
+}
+
+.increase {
+  border-right: #004445 solid 2px;
+  padding: 3px;
+  background-color: #f8b600;
+  border-radius: 2px 0px 0px 2px;
+}
+
+.decrease {
+  border-left: #004445 solid 2px;
+  padding: 3px;
+  background-color: #f8b600;
+  border-radius: 0px 2px 2px 0px;
+}
+
+.quantity {
+  padding: 7px;
 }
 
 .order h2 {
@@ -80,7 +104,8 @@ header {
 
 .order h4 {
   color: #faf5e4;
-  margin: 10px;
+  text-align: center;
+  margin: auto;
 }
 
 .order .price {
@@ -90,7 +115,7 @@ header {
 
 .products {
   background-color: #f8b600;
-  border: #280045 2px solid;
+  border: #004445 2px solid;
   min-width: 100px;
   max-width: 150px;
   margin: 1rem;
@@ -113,8 +138,10 @@ img {
 .buttonRemoveFromOrder {
   height: 30px;
   margin: 5px;
+  padding: 1px;
   border-radius: 10px;
-  background-color: rgb(88, 3, 3);
+  background-color: rgb(88, 6, 6);
+  color: #faf5e4c9;
 }
 
 footer {

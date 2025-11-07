@@ -70,11 +70,14 @@ function renderOrderContainer(orderedProducts) {
     orderedProducts.forEach((product) => {
       const card = document.createElement("div");
       card.innerHTML = `
+                    <section class="adjustQuantity"> 
+                      <button class="increase">+</button>
+                      <p class="quantity">1</p>
+                      <button class="decrease">-</button>
+                    </section>
                     <h4>${product.name}</h4>
                     <p class="price">$${product.price}</p>
-                    <button class="buttonRemoveFromOrder" id= "${product.id}"><span class="material-symbols-outlined">
-delete
-</span></button>`;
+                    <button class="buttonRemoveFromOrder" id= "${product.id}"><span class="material-symbols-outlined">delete</span></button>`;
       orderContainer.appendChild(card);
     });
     removeFromOrder();
