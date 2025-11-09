@@ -176,4 +176,75 @@ orderContainer.addEventListener("click", (e) => {
       }, 400);
     }
   }
+
+  document.addEventListener("click", (e) => {
+    if (e.target.classList.contains("send-order")) {
+      console.log(orderedProducts);
+      showOrderConfirmation();
+    }
+  });
 });
+
+function showOrderConfirmation() {
+  if (orderedProducts.length === 0) {
+    FileSystemWritableFileStream.fire({
+      background: "#faf5e4",
+      color: "#004445",
+      icon: "info",
+      iconColor: "#f8b600",
+      title: "Your order is empty!",
+      text: "Add some items before sending it to the kitchen 🍔",
+      confirmButtonColor: "#f8b600",
+    });
+    return;
+  }
+
+  const orderSummary = orderedProducts
+    .map((p) => `${p.name} x ${p.quantity} -> $${p.price * p.quantity}`)
+    .join("<br>");
+
+  Swal.fire({
+    title: "Confirm your order🧾",
+    html: `
+    <p>${orderSummary}</p>
+    <hr>
+    <p><b>Total:</b> $${orderedProducts.reduce(
+      (sum, p) => sum + p.price * p.quantity,
+      0
+    )}</p>
+    `,
+
+    showCancelButton: true,
+    cancelButtonText: "Modify order 🤔",
+    confirmButtonText: "Send to kitchen 👨‍🍳",
+    background: "#1a4841ff",
+    color: "#faf5e4",
+    confirmButtonColor: "#d59f0cff",
+    cancelButtonColor: "rgb(88, 6, 6)",
+    reverseButtons: true,
+    focusConfirm: false,
+    customClass: {
+      popup: "rounded-xl shadow-lg",
+      title: "text-xl font-semibold",
+      confirmButton: "rounded-lg px-4 py-2",
+      cancelButton: "rounded-lg px-4 py-2",
+    },
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire({
+        background: "#faf5e4",
+        color: "#004445",
+        icon: "success",
+        iconColor: "#f8b600",
+        title: "Your order is being prepared! 😺",
+        text: "It’ll be ready in about 20 minutes 🍽️",
+        timer: 4000,
+        showConfirmButton: false,
+      });
+
+      orderedProducts = [];
+      localStorage.setItem("orderedProducts", JSON.stringify([]));
+      renderOrderContainer([]);
+    }
+  });
+}
