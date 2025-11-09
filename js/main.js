@@ -50,11 +50,25 @@ function AddToOrder(products) {
         (product) => product.id == productId
       );
 
-      orderedProducts.push(selectedProduct);
-      console.log(orderedProducts);
+      const existing = orderedProducts.find((p) => p.id == productId);
+      if (existing) {
+        existing.quantity++;
+      } else {
+        (selectedProduct.quantity = 1), orderedProducts.push(selectedProduct);
+      }
 
       localStorage.setItem("orderedProducts", JSON.stringify(orderedProducts));
       renderOrderContainer(orderedProducts);
+
+      setTimeout(() => {
+        const quantityElement = document
+          .querySelector(`.product button[data-id="${productId}"]`)
+          ?.parentElement.querySelector(".quantity");
+        if (quantityElement) {
+          quantityElement.classList.add("updated");
+          setTimeout(() => quantityElement.classList.remove("updated"), 300);
+        }
+      }, 0);
     };
   });
 }
@@ -67,40 +81,99 @@ function renderOrderContainer(orderedProducts) {
   orderContainer.innerHTML = "";
 
   if (orderedProducts.length > 0) {
+    let total = 0;
     orderedProducts.forEach((product) => {
       const card = document.createElement("div");
+      card.classList.add("product");
       card.innerHTML = `
                     <section class="adjustQuantity"> 
-                      <button class="increase">+</button>
-                      <p class="quantity">1</p>
-                      <button class="decrease">-</button>
+                      <button class="increase" data-id="${product.id}">+</button>
+                      <p class="quantity">${product.quantity}</p>
+                      <button class="decrease" data-id="${product.id}">-</button>
                     </section>
                     <h4>${product.name}</h4>
                     <p class="price">$${product.price}</p>
                     <button class="buttonRemoveFromOrder" id= "${product.id}"><span class="material-symbols-outlined">delete</span></button>`;
       orderContainer.appendChild(card);
+
+      total += product.price * product.quantity;
     });
-    removeFromOrder();
+
+    const totalDiv = document.createElement("div");
+    totalDiv.classList.add("order-total");
+    totalDiv.innerHTML = `<p>Total: $${total}</p>`;
+
+    const sendOrderBtn = document.createElement("button");
+    sendOrderBtn.textContent = "Send order to the kitchen";
+    sendOrderBtn.classList.add("send-order");
+    totalDiv.appendChild(sendOrderBtn);
+
+    orderContainer.appendChild(totalDiv);
   } else {
-    orderContainer.innerHTML = "<p>There are no items in your order</p>";
+    orderContainer.innerHTML = "<p>Add some items to your order 👇😋</p>";
   }
 }
 
-function removeFromOrder() {
-  removeButton = document.querySelectorAll(".buttonRemoveFromOrder");
-  removeButton.forEach((button) => {
-    button.onclick = (e) => {
-      const productId = e.currentTarget.id;
+const orderContainer = document.getElementById("orderContainer");
 
-      orderedProducts = orderedProducts.filter(
-        (product) => product.id != productId
-      );
+orderContainer.addEventListener("click", (e) => {
+  const increaseBtn = e.target.closest(".increase");
+  const decreaseBtn = e.target.closest(".decrease");
+  const removeBtn = e.target.closest(".buttonRemoveFromOrder");
 
-      console.log("pedido actualizado", orderedProducts);
+  if (increaseBtn || decreaseBtn) {
+    const productId = e.target.dataset.id;
+    const existing = orderedProducts.find((p) => p.id == productId);
 
-      localStorage.setItem("orderedProducts", JSON.stringify(orderedProducts));
+    if (!existing) return;
 
-      renderOrderContainer(orderedProducts);
-    };
-  });
-}
+    if (increaseBtn) {
+      existing.quantity++;
+    } else if (decreaseBtn && existing.quantity > 1) {
+      existing.quantity--;
+    } else if (decreaseBtn && existing.quantity === 1) {
+      const productElement = e.target.closest(".product");
+      if (productElement) {
+        productElement.classList.add("fade-out");
+        setTimeout(() => {
+          orderedProducts = orderedProducts.filter((p) => p.id != productId);
+          localStorage.setItem(
+            "orderedProducts",
+            JSON.stringify(orderedProducts)
+          );
+          renderOrderContainer(orderedProducts);
+        }, 400);
+        return;
+      }
+    }
+
+    const quantityElement = e.target
+      .closest(".product")
+      ?.querySelector(".quantity");
+    if (quantityElement) {
+      quantityElement.textContent = existing.quantity;
+      quantityElement.classList.add("updated");
+      setTimeout(() => quantityElement.classList.remove("updated"), 300);
+    }
+
+    localStorage.setItem("orderedProducts", JSON.stringify(orderedProducts));
+    renderOrderContainer(orderedProducts);
+  }
+
+  if (removeBtn) {
+    const productId = removeBtn.id;
+    const productElement = e.target.closest(".product");
+
+    if (productElement) {
+      productElement.classList.add("fade-out");
+      setTimeout(() => {
+        orderedProducts = orderedProducts.filter((p) => p.id != productId);
+        localStorage.setItem(
+          "orderedProducts",
+          JSON.stringify(orderedProducts)
+        );
+        renderOrderContainer(orderedProducts);
+      }, 400);
+    }
+  }
+});
