@@ -205,3 +205,8 @@ footer {
   padding: 2rem;
   text-align: center;
 }
+
+footer a {
+  text-decoration: none;
+  color: #f8b600;
+}
